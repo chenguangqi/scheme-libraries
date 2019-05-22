@@ -2,3 +2,10 @@
 * Libraries of scheme
   目前支持的库有:
   - Cairo
+
+  
+  #+BEGIN_SRC shell
+  sed -n -r -e '/^cairo_public.*/,/\);$/p' /usr/include/cairo/cairo.h  |\
+  sed -r -n '/^cairo_public.*/{h;bend};/\);$/!{H;bend};{H;x;y/\n/ /;p};:end' |\
+  sed -r 's/[ \t]+/ /g'
+  #+END_SRC
